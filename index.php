@@ -11,9 +11,6 @@
 
 <?php
     // Inicio el control de sesiones
-    /**
-     * Holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-     */
     session_start();
 ?>
 
