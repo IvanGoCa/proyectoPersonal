@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+:root{
+    --orange: #ff7b00;
+    --red: #9e0000;
+    --light-purple: #6200ff;
+    --dark-purple: #35008a;
+    --purple: #4c00c5;
+    --white: #fff;
+    --grey: #aaaaaac2;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Bebas Neue', cursive;
+    letter-spacing: 1px;
+}
+
+*::selection{
+    background-color: var(--orange);
+}
+
+body{
+    position: relative;
+    background-image: url('https://cdn.thegameawards.com/frontend/bgs/nominee-bg-d.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    background-position: center;
+}
+
+header{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--dark-purple);
+    height: 100px;
+    padding: 20px;
+    overflow: hidden;
+}
+
+header article:nth-of-type(1) img{
+    width: 250px;
+}
+
+header article:nth-of-type(2) img{
+    width: 45px;
+    padding-right: 15px;
+}
+
+header span{
+    position: relative;
+}
+
+header a{
+    text-decoration: none;
+    color: var(--white);
+    font-size: 25px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+header article:nth-of-type(2){
+    overflow: hidden;
+    cursor: pointer;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header article:nth-of-type(2){
+    position: relative;
+    background-color: var(--purple);
+    padding: 20px 50px;
+    overflow: hidden;
+}
+
+header article:nth-of-type(2) a::before{
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: var(--white);
+    transition: .3s ease-in;
+    transform: translateX(-100%);
+}
+
+header article:nth-of-type(2) a:hover::before{
+    transform: translateX(0);
+}
+
+header a:hover{
+    transition: .3s ease-in;
+    color: var(--light-purple);
+}
+
+main{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 30px;
+}
+
+main h1{
+    color: var(--white);
+    letter-spacing: 3px;
+    font-weight: lighter;
+    font-size: 75px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+main h1 + a{
+    position: relative;
+    text-decoration: none;
+    font-size: 30px;
+    color: var(--white);
+    background-color: var(--orange);
+    padding: 10px 50px;
+    transition: .3s ease-in-out;
+    overflow: hidden;
+}
+
+main h1 + a:hover{
+    transition: .3s ease-in-out;
+    background-color: var(--light-purple);
+}
+
+main article{
+    margin-top: 70px;
+    width: 100%;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fill, 320px);
+    justify-content: center;
+    transition: .3s ease-in;
+}
+
+main article a{
+    position: relative;
+    text-decoration: none;
+    width: 270px;
+    margin-bottom: 50px;
+    justify-content: center;
+    overflow: hidden;
+}
+
+main article a img{
+    position: relative;
+    margin: 0;
+    width: 100%;
+    transition: .3s ease-in-out;
+}
+
+main article a img:hover{
+    transition: .3s ease-in-out;
+    transform: scale(1.05);
+}
+
+main article a p{
+    position: relative;
+    color: var(--white);
+    text-align: center;
+    background-color: var(--dark-purple);
+    margin-top: -6px;
+    padding: 10px;
+    font-size: 20px;
+    transition: .3s ease-in-out;
+}
+
+main article a:hover p{
+    transition: .3s ease-in-out;
+    background-color: var(--white);
+    color: var(--dark-purple);
+}
+
+main article a p:hover{
+    background-color: var(--white);
+    color: var(--dark-purple);
+}
+
+main article a h2{
+    color: var(--white);
+    font-weight: lighter;
+    margin-top: 10px;
+    font-size: 27px;
+}
+
+main article a h3{
+    font-weight: lighter;
+    color: var(--grey);
+}
+
+main article:last-of-type{
+    margin-bottom: 250px;
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    background-color: var(--dark-purple);
+}
+
+footer h1 {
+    font-size: 17px;
+    color: var(--white);
+    font-weight: lighter;
+}

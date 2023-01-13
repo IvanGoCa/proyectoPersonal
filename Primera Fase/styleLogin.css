@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+:root{
+    --orange: #ff7b00;
+    --red: #9e0000;
+    --light-purple: #6200ff;
+    --dark-purple: #35008a;
+    --purple: #4c00c5;
+    --white: #fff;
+    --grey: #aaaaaac2;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Bebas Neue', cursive;
+    letter-spacing: 1px;
+}
+
+body{
+    position: relative;
+    background-image: url('https://cdn.thegameawards.com/frontend/bgs/nominee-bg-d.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    background-position: center;
+}
+
+header{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--dark-purple);
+    height: 100px;
+    padding: 20px;
+    padding-right: 0;
+    overflow: hidden;
+}
+
+header article:nth-of-type(1) img{
+    width: 250px;
+}
+
+header article:nth-of-type(2) p{
+    font-size: 45px;
+    color: var(--dark-purple);
+}
+
+header article:nth-of-type(2){
+    background-color: var(--white);
+    padding: 100% 20px;
+}
+
+main{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 15vh;
+}
+
+main form{
+    position: relative;
+    width: 500px;
+    min-height: 400px;
+    background-color: var(--purple);
+    border-radius: 10px;
+    border: 3px solid var(--white);
+}
+
+main form article:nth-of-type(1){
+    margin-top: 60px;
+}
+
+main form article{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+main form article:nth-of-type(1) p{
+    box-sizing: border-box;
+    position: relative;
+    color: var(--red);
+    background-color: var(--grey);
+    padding: 5px 30px;
+}
+
+main form article label{
+    visibility: hidden;
+}
+
+main form article input{
+    font-size: 20px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 15px;
+    width: 250px;
+    border-radius: 4px;
+    border: none;
+}
+
+main form article:nth-of-type(2){
+    margin-top: 50px;
+}
+
+main form article button{
+    position: relative;
+    font-size: 19px;
+    padding: 6px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+main form article button span{
+    position: relative;
+    z-index: 1;
+}
+
+main form article button::before{
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 0;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    /* background-color: green; */
+    border-right: 40px solid transparent;
+    border-bottom: 40px solid green;
+    transition: .3s ease-in;
+}
+
+main form article button:hover::before{
+    transform: translateX(0);
+}
+
+main form article button:hover{
+    transition: .3s ease-in;
+    color: white;
+}
+
+main form article p{
+    color: white;
+    margin-bottom: 30px;
+}
+
+main form article p a{
+    text-decoration: none;
+    color: var(--orange);
+}
+
+
+main article:only-of-type{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--purple);
+    color: white;
+    width: 650px;
+    height: 300px;
+    border: 4px solid var(--white);
+    border-radius: 10px;
+    font-size: 30px;
+}
+
+main article:only-of-type p a{
+    text-decoration: none;
+    color: var(--orange);
+}
+
+
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    background-color: #D43F10;
+}
+
+footer h1 {
+    font-size: 17px;
+    color: white;
+    font-weight: lighter;
+}
