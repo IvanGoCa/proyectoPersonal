@@ -1,5 +1,5 @@
 <?php
-    include ('../bd.php');
+    include ('./../controladores/bd.php');
 
     class Juegos{
 
