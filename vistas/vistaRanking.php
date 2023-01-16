@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styleRanking.css">
+    <link rel="stylesheet" href="../estilos/styleRanking.css">
     <link rel="shortcut icon" href="https://i.postimg.cc/sfMkg4R8/The-Game-Awards-logo-2020-svg.png" type="image/x-icon">
     <title>Ranking</title>
 </head>
 <body>
     <header>
         <article>
-            <a href="index.php">
+            <a href="./../controladores/index.php">
                 <img src="https://i.postimg.cc/TPKktRsR/The-Game-Awards-logo-2020-svg.png" alt="">
             </a>
         </article>
@@ -27,7 +27,7 @@
             </section>
 
             <?php
-                $num = 0;
+                $num = 1;
                 foreach($ranking as $row){
                     echo '<section>';
                         echo '<p>'. $num++ .'</p>';

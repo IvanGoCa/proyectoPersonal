@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styleIndex.css">
+    <link rel="stylesheet" href="./../estilos/styleIndex.css">
     <link rel="shortcut icon" href="https://i.postimg.cc/sfMkg4R8/The-Game-Awards-logo-2020-svg.png" type="image/x-icon">
     <title>Juego del año | Nominados</title>
 </head>
@@ -17,7 +17,7 @@
 <body>
     <header>
         <article>
-            <a href="index.php">
+            <a href="./../controladores/index.php">
                 <img src="https://i.postimg.cc/TPKktRsR/The-Game-Awards-logo-2020-svg.png" alt="logo">
             </a>
         </article>
@@ -36,7 +36,7 @@
     <main>
         <h1>Juego del año</h1>
 
-        <a href="ranking.php"><span>ranking</span></a>
+        <a href="./../controladores/ranking.php"><span>ranking</span></a>
 
         <article>
             <?php
