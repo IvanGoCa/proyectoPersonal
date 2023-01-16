@@ -8,12 +8,6 @@
     <link rel="shortcut icon" href="https://i.postimg.cc/sfMkg4R8/The-Game-Awards-logo-2020-svg.png" type="image/x-icon">
     <title>Juego del año | Nominados</title>
 </head>
-
-<?php
-    // Inicio el control de sesiones
-    session_start();
-?>
-
 <body>
     <header>
         <article>
@@ -24,10 +18,10 @@
         <article>
             <?php
                 // Dependiendo de si el usuario ha iniciado sesión o no pondrá un mensaje u otro
-                if(!isset($_SESSION['usuario'])){
-                    echo '<a href="login.php"><img src="https://i.postimg.cc/tJQm1L29/login.png" alt="icono-inicio-sesion"><span>Iniciar sesión</span></a>';
+                if(!Usuarios::isLogged()){
+                    echo '<a href="./../controladores/login.php"><img src="https://i.postimg.cc/tJQm1L29/login.png" alt="icono-inicio-sesion"><span>Iniciar sesión</span></a>';
                 }else{
-                    echo '<a href="logoff.php"><img src="https://i.postimg.cc/fR2273B2/logoff.png" alt="logoff"><span>Cerrar sesión</span></a>';
+                    echo '<a href="./../controladores/logoff.php"><img src="https://i.postimg.cc/fR2273B2/logoff.png" alt="logoff"><span>Cerrar sesión</span></a>';
                 }
             ?>            
         </article>
@@ -42,9 +36,9 @@
             <?php
                 // Creo un string en el que se pueden almacenar 3 tipos de mensajes dependiendo de si ha votado el usuario o no y si ha iniciado sesión
                 $boton = "";
-                if(isset($_SESSION['usuario'])){// Si el usuario ha iniciado sesión
+                if(Usuarios::isLogged()){// Si el usuario ha iniciado sesión
     
-                    foreach($votos as $row){                            
+                    foreach(Votos::getVotado() as $row){                            
                         if($row['votado'] == "1")
                             $boton = "ya has votado";
                         else
@@ -62,14 +56,14 @@
                 try{
 
                     // Recojo toda la información de la tabla juegos
-                    $sql = "SELECT  * FROM juegos";
+                    $sql = "SELECT * FROM juegos";
                     $resultado = $goty -> query($sql);
 
                     foreach($resultado as $row){
 
                         // Dependiendo del mensaje del botón habrá un enlace u otro
                         if($boton == "inicia sesión para votar")
-                            echo '<a href="login.php">';
+                            echo '<a href="./../controladores/login.php">';
                         if($boton == "ya has votado")
                             echo '<a href="#">';
                         if($boton == "vota aquí")

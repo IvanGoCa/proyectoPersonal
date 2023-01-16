@@ -1,6 +1,6 @@
 <?php
+    include ('./../modelos/bd.php');
     include ('./../modelos/votos.php');
-    if(isset($_SESSION['usuario']))
-        $votos = Votos::getVotado($_SESSION['usuario']);
+    include ('./../modelos/usuarios.php');
     include ('./../vistas/vistaIndex.php');
 ?>

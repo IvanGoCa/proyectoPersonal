@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="https://i.postimg.cc/sfMkg4R8/The-Game-Awards-logo-2020-svg.png" type="image/x-icon">
-    <link rel="stylesheet" href="styleLogin.css">
+    <link rel="stylesheet" href="./../estilos/styleLogin.css">
     <title>Registrarse</title>
 </head>
 <?php
