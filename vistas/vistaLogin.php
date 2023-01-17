@@ -44,7 +44,7 @@
 
                 // So se ha encontrado una coincidencia se inicia la sesión y redirige al index
                 if(Usuarios::login($usuario, $contra)){
-                    header('Location: index.php');
+                    header('Location: ./../controladores/index.php');
                 }else
                 // Si es incorrecto se pone la variable a true
                     $incorrecto = true;
@@ -70,7 +70,7 @@
             </article>
 
             <article>
-                <p>¿No tienes cuenta? <a href="register.php">Regístrate aquí</a></p>
+                <p>¿No tienes cuenta? <a href="./../controladores/register.php">Regístrate aquí</a></p>
             </article>
         </form>
     </main>

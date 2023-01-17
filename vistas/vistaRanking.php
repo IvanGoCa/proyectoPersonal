@@ -28,7 +28,7 @@
 
             <?php
                 $num = 1;
-                foreach($ranking as $row){
+                foreach(Juegos::getRanking() as $row){
                     echo '<section>';
                         echo '<p>'. $num++ .'</p>';
                         echo '<p>'. $row['nombre'] .'</p>';

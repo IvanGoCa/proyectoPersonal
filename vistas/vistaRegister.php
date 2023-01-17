@@ -8,17 +8,6 @@
     <link rel="stylesheet" href="./../estilos/styleLogin.css">
     <title>Registrarse</title>
 </head>
-<?php
-    // Inicio de control de sesiones
-    session_start();
-
-    // Variable para comprobar si el usuario ha iniciado sesión iniciada a false
-    $iniciado = false;
-
-    // Si ha iniciado sesión variable a true
-    if(isset($_SESSION['usuario']))
-        $iniciado = true;
-?>
 <body>
     <header>
         <article>
@@ -32,7 +21,7 @@
     </header>
 <?php
     // Si no ha iniciado sesión
-    if(!$iniciado){
+    if(!Usuarios::isLogged()){
 ?>
     <main>
         <?php
@@ -60,29 +49,11 @@
                     if($contra !== $reptieContra)
                         $contrasenaNoCoincide = true;
 
-                    // Después se comprueba si el usuario existe
-                    $goty = new mysqli('localhost', 'root', '', 'goty');
-
-                    try{
-                        // Busco en la BBDD el usuario introducido en el formulario
-                        $sql = 'SELECT usuario
-                                FROM usuarios
-                                WHERE usuario = "'. $usuario .'"';
-                    
-                        $resultado = $goty -> query($sql);
-
-                        // Si el usuario existe cambio la variable de compropbación del usuario a true
-                        foreach($resultado as $row){
-                            if($row['usuario'] === $usuario)
-                                $usuarioExiste = true;
-                        }
-
-                    }catch(Exception $e){
-                        echo '<p style="color: red">Error: '. $e .'</p>';
+                    // Si el usuario existe cambio la variable de compropbación del usuario a true
+                    foreach(Usuarios::userExists($usuario) as $row){
+                        if($row['usuario'] === $usuario)
+                            $usuarioExiste = true;
                     }
-
-                    // Cierro la conexión
-                    $goty -> close();
             }
         ?>
 
@@ -102,25 +73,7 @@
                         
                         // Si el usuario no existe y las contraseñas no coinciden crea el usuario
                         }else{
-                            // Se encripta la contraseña
-                            $contra = md5($contra);
-
-                            $goty = new mysqli('localhost', 'root', '', 'goty');
-
-                            try{
-                                // Consulta que introduce un usuario y pone por defecto 0 en la columna de votado
-                                $sql = 'INSERT INTO usuarios VALUES ("'. $usuario .'", "'. $contra .'", 0)';
-                            
-                                $resultado = $goty -> query($sql);
-
-                            }catch(Exception $e){
-                                echo '<p style="color: red">Error: '. $e .'</p>';
-                            }
-
-                            $goty -> close();
-
-                            // Tras el registro inicia sesión
-                            $_SESSION['usuario'] = $usuario;
+                            Usuarios::createUser($usuario, $contra);
 
                             echo '<p style="color: green">Usuario creado correctamente</p>';
 
@@ -144,7 +97,7 @@
             </article>
 
             <article>
-                <p>¿Ya tienes cuenta? <a href="login.php">Inicia sesión aquí</a></p>
+                <p>¿Ya tienes cuenta? <a href="./../controladores/login.php">Inicia sesión aquí</a></p>
             </article>
         </form>
     </main>
@@ -157,10 +110,10 @@
     <main>
         <article>
             <p>Ya has iniciado sesión</p>
-            <p>Si quieres registrarte primero <a href="logoff.php">cierra sesión</a></p>
+            <p>Si quieres registrarte primero <a href="./../controladores/logoff.php">cierra sesión</a></p>
             
             <?php
-                header('Refresh: 4; url=index.php');
+                header('Refresh: 4; url=./../controladores/index.php');
             ?>
 
         </article>

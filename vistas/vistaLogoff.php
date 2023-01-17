@@ -11,7 +11,7 @@
 <body>
     <header>
         <article>
-            <a href="index.php">
+            <a href="./../controladores/index.php">
                 <img src="https://i.postimg.cc/TPKktRsR/The-Game-Awards-logo-2020-svg.png" alt="">
             </a>
         </article>
