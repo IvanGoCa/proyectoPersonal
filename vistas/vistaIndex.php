@@ -38,12 +38,17 @@
                 $boton = "";
                 if(Usuarios::isLogged()){// Si el usuario ha iniciado sesión
     
-                    foreach(Votos::getVotado() as $row){                            
-                        if($row['votado'] == "1")
-                            $boton = "ya has votado";
-                        else
-                            $boton = "vota aquí";
-                    }
+                    if(Votos::getVotado())
+                        $boton = "ya has votado";
+                    else
+                        $boton = "vota aquí";
+
+                    // foreach(Votos::getVotado() as $row){
+                    //     if($row['votado'] == "1")
+                    //         $boton = "ya has votado";
+                    //     else
+                    //         $boton = "vota aquí";
+                    // }
 
                 }else{ // En el caso de que no haya iniciado sesión
                     $boton = "inicia sesión para votar";

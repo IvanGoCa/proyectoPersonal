@@ -46,7 +46,7 @@
             if(!$btnSi){
 
                 // En el caso de que no haya votado
-                if(Votos::getVotado()){
+                if(!Votos::getVotado()){
         ?>
 
         <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">

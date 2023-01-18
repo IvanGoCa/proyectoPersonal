@@ -42,7 +42,7 @@
                 if(isset($_POST['contra']))
                     $contra = $_POST['contra'];
 
-                // So se ha encontrado una coincidencia se inicia la sesión y redirige al index
+                // Si se ha encontrado una coincidencia se inicia la sesión y redirige al index
                 if(Usuarios::login($usuario, $contra)){
                     header('Location: ./../controladores/index.php');
                 }else

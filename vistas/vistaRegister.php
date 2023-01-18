@@ -50,10 +50,14 @@
                         $contrasenaNoCoincide = true;
 
                     // Si el usuario existe cambio la variable de compropbación del usuario a true
-                    foreach(Usuarios::userExists($usuario) as $row){
-                        if($row['usuario'] === $usuario)
-                            $usuarioExiste = true;
-                    }
+
+                    if(Usuarios::userExists($usuario))
+                        $usuarioExiste = true;  
+
+                    // foreach(Usuarios::userExists($usuario) as $row){
+                    //     if($row['usuario'] === $usuario)
+                    //         $usuarioExiste = true;
+                    // }
             }
         ?>
 
