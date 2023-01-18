@@ -12,13 +12,9 @@
             $bd -> conectar('localhost', 'root', '', 'goty');
             
             $resultado = $bd -> consulta('SELECT * FROM juegos');
-            $juegos = array();
-            
-            foreach($resultado as $row)
-                $juegos[] = $row;
             
             $bd -> desconectar();
-            return $juegos;
+            return $resultado;
         }
 
         // Función que realiza una consulta buscando el nombre y los votos 

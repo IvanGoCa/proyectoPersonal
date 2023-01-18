@@ -53,11 +53,6 @@
 
                     if(Usuarios::userExists($usuario))
                         $usuarioExiste = true;  
-
-                    // foreach(Usuarios::userExists($usuario) as $row){
-                    //     if($row['usuario'] === $usuario)
-                    //         $usuarioExiste = true;
-                    // }
             }
         ?>
 

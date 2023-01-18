@@ -43,52 +43,30 @@
                     else
                         $boton = "vota aquí";
 
-                    // foreach(Votos::getVotado() as $row){
-                    //     if($row['votado'] == "1")
-                    //         $boton = "ya has votado";
-                    //     else
-                    //         $boton = "vota aquí";
-                    // }
-
                 }else{ // En el caso de que no haya iniciado sesión
                     $boton = "inicia sesión para votar";
                 }
 
 
-                $goty = new mysqli('localhost', 'root', '', 'goty');
-                $error = $goty -> connect_errno;
+                foreach(Juegos::getJuegos() as $row){
 
-                try{
+                    // Dependiendo del mensaje del botón habrá un enlace u otro
+                    if($boton == "inicia sesión para votar")
+                        echo '<a href="./../controladores/login.php">';
+                    if($boton == "ya has votado")
+                        echo '<a href="#">';
+                    if($boton == "vota aquí")
+                        // Cada enlace del juego contiene una variable en la que se muestra el id
+                        echo '<a href="votos.php?juego='.$row['id'].'">'; 
 
-                    // Recojo toda la información de la tabla juegos
-                    $sql = "SELECT * FROM juegos";
-                    $resultado = $goty -> query($sql);
-
-                    foreach($resultado as $row){
-
-                        // Dependiendo del mensaje del botón habrá un enlace u otro
-                        if($boton == "inicia sesión para votar")
-                            echo '<a href="./../controladores/login.php">';
-                        if($boton == "ya has votado")
-                            echo '<a href="#">';
-                        if($boton == "vota aquí")
-                            // Cada enlace del juego contiene una variable en la que se muestra el id
-                            echo '<a href="votos.php?juego='.$row['id'].'">'; 
-
-                            // Añado la información de cada juego (Imagen, nombre, descripción)
-                            echo '<img src="'. $row['img'] .'" alt="">';
-                            echo '<p>'. $boton .'</p>';
-                            echo '<h2>'. $row['nombre'] .'</h2>';
-                            echo '<h3>'. $row['productora'] .'</h3>';
-                        echo '</a>';
-                    }
-                    
-                    // Cierro la conexión con la BBDD
-                    $goty -> close();
-
-                }catch(Exception $e){
-                    echo "<p>Error: ". $e->getMessage() ."</p>";
+                        // Añado la información de cada juego (Imagen, nombre, descripción)
+                        echo '<img src="'. $row['img'] .'" alt="">';
+                        echo '<p>'. $boton .'</p>';
+                        echo '<h2>'. $row['nombre'] .'</h2>';
+                        echo '<h3>'. $row['productora'] .'</h3>';
+                    echo '</a>';
                 }
+
             ?>
         </article>
     </main>
