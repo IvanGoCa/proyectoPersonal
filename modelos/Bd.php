@@ -4,7 +4,7 @@
      * Clase de la Base de Datos
      * 
      * Clase con constructor vacío donde se realiza la conexión con la Base
-     * de Datos o las distintas consultas que se requiran.
+     * de Datos o las distintas consultas que se requieran.
      * 
      * @author: Iván Gómez Caviedes
      * @version: 1.0.0 
@@ -29,8 +29,8 @@
          * @param contra Se almacena la contraseña del usuario.
          * @param base Se almacena el nombre de la BBDD que se quiere modificar o consultar.
          * 
-         * @return -1 en el caso de que la conexión se haya realizado con éxito.
-         * @return 0 en el caso de que la conexión no se haya realizado.
+         * @return -1 en el caso de que la conexión no se haya realizado.
+         * @return 0 en el caso de que la conexión se haya realizado con éxito.
          */
         function conectar(string $ip, string $usuario, string $contra, string $base){
             $this -> bd = new mysqli($ip, $usuario, $contra, $base);

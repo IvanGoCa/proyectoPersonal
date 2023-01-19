@@ -1,5 +1,7 @@
 <?php
     // Se inicia la sesión nada más incluir el archivo.
+    // De esta manera se hacen las sesiones desde el principio 
+    // del archivo aunque la clase no esté instanciada.
     session_start();
     
     // Clase que realiza toda la gestión de usuarios.
@@ -9,7 +11,7 @@
         public function __construct(){}
 
         // Función que comprueba si el usuario ha iniciado sesión en la página.
-        // En el caso de que sea así devuelve true. En caso contrario devuelve false.
+        // En el caso de que sea así devuelve TRUE. En caso contrario devuelve FALSE.
         static function isLogged(){
             if(isset($_SESSION['usuario']))
                 return true;
@@ -45,10 +47,10 @@
         // Función que destruye la sesión que exista.
         static function logoff(){session_destroy();}
 
-        // Función que comprueba si el usuario pasado por parámetro existe. Realiza una
-        // consulta en la tabla usuarios de la BBDD donde el usuario sea el pasado por
-        // parámetro. En el caso de que el usuario exista se devuelve TRUE, en caso 
-        // contrario devuelve FALSE.
+        // Función que comprueba si el usuario pasado por parámetro existe. 
+        // Realiza una consulta en la tabla usuarios de la BBDD donde
+        // el usuario sea el pasado por parámetro. En el caso de que el usuario
+        // exista se devuelve TRUE, en caso contrario devuelve FALSE.
         static function userExists($usuario){
             $bd = new Bd();
             $bd -> conectar('localhost', 'root', '', 'goty');

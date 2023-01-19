@@ -33,7 +33,7 @@
 
         // Función que realiza una consunlta buscando un juego dado en la URL y 
         // recogido mediante $_GET[].
-        // Devuelve todo lo relacionado con el jugo dado.
+        // Devuelve todo lo relacionado con el juego dado.
         public static function getJuego(){
             $bd = new Bd();
             $bd -> conectar('localhost', 'root', '', 'goty');

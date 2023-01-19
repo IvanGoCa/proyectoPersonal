@@ -22,8 +22,6 @@
                     return true;
             }
             return false;
-
-            // return $resultado;
         }
 
         // Función que añade votos a un juego y al usuario. Realiza 2 updates, uno en
@@ -34,14 +32,14 @@
             $bd = new Bd();
             $bd -> conectar('localhost', 'root', '', 'goty');
 
-            $bd -> manipular(
-                'UPDATE juegos
+            $bd -> manipular('
+                UPDATE juegos
                 SET votos = votos + 1
                 WHERE id = "'. $_GET['juego'] .'"'
             );
 
-            $bd -> manipular(
-                'UPDATE usuarios
+            $bd -> manipular('
+                UPDATE usuarios
                 SET votado = 1
                 WHERE usuario = "'. $_SESSION['usuario'] .'"'
             );

@@ -11,7 +11,7 @@
 <body>
     <header>
         <article>
-            <a href="index.php">
+            <a href="./../index.php">
                 <img src="https://i.postimg.cc/TPKktRsR/The-Game-Awards-logo-2020-svg.png" alt="">
             </a>
         </article>
@@ -21,6 +21,7 @@
     </header>
 <?php
     // Si no ha iniciado sesión
+    // Para ver la función 'isLogged()' ir a la clase modelo Usuarios.
     if(!Usuarios::isLogged()){
 ?>
     <main>
@@ -28,55 +29,50 @@
             // Si ha pulsado el botón
             if(isset($_POST['btn'])){
 
+                // Creo 2 variables con las que se comprueba si el usuario ya existe y si las contraseñas coinciden.
+                $contrasenaNoCoincide = false;
+                $usuarioExiste = false;
+
+                // Recojo los datos del formulario.
                 if(isset($_POST['usuario']))
-                    // Recojo el usuario introducido en el formulario
                     $usuario = $_POST['usuario'];
 
-                    // Creo 2 variables con las que se comprueba si el usuario ya existe y si las contraseñas coinciden
-                    $contrasenaNoCoincide = false;
-                    $usuarioExiste = false;
+                if(isset($_POST['contra']))
+                    $contra = $_POST['contra'];
 
-                    // Guardo la contraseña introducida
-                    if(isset($_POST['contra']))
-                        $contra = $_POST['contra'];
+                if(isset($_POST['repiteContra']))
+                    $reptieContra = $_POST['repiteContra'];
 
-                    // Guardo la contraseña que hay que repetir en el formulario
-                    if(isset($_POST['repiteContra']))
-                        $reptieContra = $_POST['repiteContra'];
+                // Se comprueban usuarios y contraseñas para en caso de no ser válidas mostrar
+                // un mensaje de error.
+                // Para ver la función 'userExists()' ir a la clase modelo Usuarios.
+                if($contra !== $reptieContra)
+                    $contrasenaNoCoincide = true;
 
-                    // Primero se comprueba si la contraseña existe
-                    // Si no son iguales las contraseñas la variable cambia a true.
-                    if($contra !== $reptieContra)
-                        $contrasenaNoCoincide = true;
-
-                    // Si el usuario existe cambio la variable de compropbación del usuario a true
-
-                    if(Usuarios::userExists($usuario))
-                        $usuarioExiste = true;  
+                if(Usuarios::userExists($usuario))
+                    $usuarioExiste = true;  
             }
         ?>
-
         <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
             <article>
                 <?php
-                    // Cuando se pulse el botón
+                    // Cuando se pulse el botón si las variables de comprobación están a true muestra los mensajes.
+                    // En el caso de que ambas variables sean false crea el usuario.
                     if(isset($_POST['btn'])){
-                        // Si una de las variables de comprobación está a true
                         if($contrasenaNoCoincide || $usuarioExiste){
-                            // Si la contraseña no coincide se muestra un mensaje
+                            
                             if($contrasenaNoCoincide)
                                 echo '<p>Las contraseñas no coinciden</p>';
-                            // Si el usuario no coincide se muestra un mensaje
                             else
                                 echo '<p>El usuario '. $usuario .' ya existe</p>';
                         
-                        // Si el usuario no existe y las contraseñas no coinciden crea el usuario
                         }else{
+                            // Para ver la función 'createUser()' ir a la clase modelo Usuarios.
                             Usuarios::createUser($usuario, $contra);
 
                             echo '<p style="color: green">Usuario creado correctamente</p>';
 
-                            header('Refresh: 1; url=index.php');
+                            header('Refresh: 1; url=./../index.php');
                         }
                     }
                 ?>
@@ -99,25 +95,21 @@
                 <p>¿Ya tienes cuenta? <a href="./../controladores/login.php">Inicia sesión aquí</a></p>
             </article>
         </form>
-    </main>
-    
+    </main>    
 <?php
-    // Si ha iniciado sesión muestra un mensaje de error junto con un enlace a login. Despues de 4 segundos redirige a index.
+    // Si ha iniciado sesión muestra un mensaje de error junto con un enlace a login. 
+    // Despues de 4 segundos redirige a index.
     }else{
 ?>
-
     <main>
         <article>
             <p>Ya has iniciado sesión</p>
-            <p>Si quieres registrarte primero <a href="./../controladores/logoff.php">cierra sesión</a></p>
-            
+            <p>Si quieres registrarte primero <a href="./../controladores/logoff.php">cierra sesión</a></p>            
             <?php
-                header('Refresh: 4; url=./../controladores/index.php');
+                header('Refresh: 4; url=./../index.php');
             ?>
-
         </article>
     </main>
-
 <?php
     }
 ?>

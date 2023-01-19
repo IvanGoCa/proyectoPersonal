@@ -11,7 +11,7 @@
 <body>
     <header>
         <article>
-            <a href="index.php">
+            <a href="./../index.php">
                 <img src="https://i.postimg.cc/TPKktRsR/The-Game-Awards-logo-2020-svg.png" alt="">
             </a>
         </article>
@@ -19,14 +19,12 @@
             <p>Inicio de sesión</p>
         </article>
     </header>
-
     <?php
         // Si no ha iniciado sesión muestra el formulario de login
+        // Para ver la función 'isLogged()' ir a la clase modelo Usuarios.
         if(!Usuarios::isLogged()){
     ?>
-
     <main>
-
     <?php
             // Variable que se inicia a false y solo cambiará cuando todos los datos del formulario sean true
             $incorrecto = false;
@@ -34,23 +32,22 @@
             // En el caso de que se haya pulsado el botón
             if(isset($_POST['btn'])){
 
-                // Recojo el usuario introducido
+                // Recojo los datos del formulario
                 if(isset($_POST['usuario']))
                     $usuario = $_POST['usuario'];
 
-                // Recojo la contraseña introducida
                 if(isset($_POST['contra']))
                     $contra = $_POST['contra'];
 
                 // Si se ha encontrado una coincidencia se inicia la sesión y redirige al index
+                // En caso contrario pone la variable $incorrecto a true.
+                // Para ver la función 'login()' ir a la clase modelo Usuarios.
                 if(Usuarios::login($usuario, $contra)){
-                    header('Location: ./../controladores/index.php');
+                    header('Location: ./../index.php');
                 }else
-                // Si es incorrecto se pone la variable a true
                     $incorrecto = true;
                 }
             ?>
-
         <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
             <article>
                 <?php
@@ -74,25 +71,20 @@
             </article>
         </form>
     </main>
-
     <?php
         // Si ha iniciado sesión muestra un mensaje y redirige al index
         }else{
-            
     ?>
-
         <main>
             <article>
                 <p>Ya has iniciado sesión</p>
                 <?php
-                    header('Refresh: 2; url=index.php');
+                    header('Refresh: 2; url=./../index.php');
                 ?>
             </article>
         </main>
-
     <?php
         }
     ?>
-
 </body>
 </html>

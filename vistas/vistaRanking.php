@@ -11,7 +11,7 @@
 <body>
     <header>
         <article>
-            <a href="./../controladores/index.php">
+            <a href="./../index.php">
                 <img src="https://i.postimg.cc/TPKktRsR/The-Game-Awards-logo-2020-svg.png" alt="">
             </a>
         </article>
@@ -28,6 +28,8 @@
 
             <?php
                 $num = 1;
+                // Se muestra el ranking de los juegos más votados de mayor a menor votación
+                // Para ver la función 'getRanking()' ir a la clase modelo Juegos.
                 foreach(Juegos::getRanking() as $row){
                     echo '<section>';
                         echo '<p>'. $num++ .'</p>';

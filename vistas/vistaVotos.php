@@ -11,7 +11,7 @@
 <body>
     <header>
         <article>
-            <a href="index.php">
+            <a href="./../index.php">
                 <img src="https://i.postimg.cc/TPKktRsR/The-Game-Awards-logo-2020-svg.png" alt="">
             </a>
         </article>
@@ -19,58 +19,52 @@
             <p>votación</p>
         </article>
     </header>
-
     <?php
         // Si ha iniciado la sesión puede votar
+        // Para ver la función 'isLogged()' ir a la clase modelo Usuarios.
         if(Usuarios::isLogged()){
     ?>
-
     <main>
-
         <?php
             // Variable que controla el botón 'Si' del formulario
             $btnSi = false;
 
-            // Si se ha pulsado el botón 'Si'
+            // Si se ha pulsado el botón 'Si' se cambia la variable que controla el botón
+            // y modifica las tablas de la BBDD.
+            // Para ver la función 'setVotos()' ir a la clase modelo Votos.
             if(isset($_POST['btnSi'])){
-                // Pongo la variable del botón a true
                 $btnSi = true;
                 Votos::setVotos();
             }
 
-            // Si ha pulsado el botón 'No' redirige al index
             if(isset($_POST['btnNo']))
-                header('Location: ./../controladores/index.php');
+                header('Location: ./../index.php');
 
-            // Si no se ha pulsado el botón 'Si'
+            // Si no se ha pulsado el botón 'Si' muestra los votos.
+            // En caso contrario muestra un mensaje y redirige al index.
             if(!$btnSi){
 
-                // En el caso de que no haya votado
+                // En el caso de que no haya votado muestra el nombre del juego con su imagen.
+                // En caso contrario redirige al index.
+                // Para ver la función 'getVotado()' ir a la clase modelo Votos.
                 if(!Votos::getVotado()){
         ?>
-
         <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
-
             <?php
-                // Muestro el nombre del juego junto con su imagen
                 foreach(Juegos::getJuego() as $row){
                     echo ' <p>¿Quieres votar a <strong>'. $row['nombre'] .'</strong> como mejor juego del año?</p>';
                             
                     echo '<img src="'. $row['img'] .'" alt="imagen de '. $row['nombre'] .'">';
                 }
-            ?>
-
-            
+            ?>            
             <div>
                 <button type="submit" name="btnSi">si</button>
                 <button type="submit" name="btnNo">no</button>
             </div>
         </form>
         <?php
-                // Si ha votado muestra un mensaje distinto y redirige al index
                 }else{
-        ?>
-            
+        ?>            
         <main>
             <article>
                 <p>Gracias por tu voto.</p>
@@ -79,16 +73,12 @@
                 ?>
             </article>
         </main>
-
         <?php
                 }
         ?>
-
         <?php
-            // Si ha pulsado el botón 'Si'
             }else{
         ?>
-
         <main>
             <article>
                 <p>Gracias por tu voto.</p>
@@ -97,26 +87,21 @@
                 ?>
             </article>
         </main>
-
         <?php
             }
         ?>
     </main>
-
     <?php
-        // Si no ha iniciado sesión muestra un mensaje y redirige al index
         }else{
     ?>
-
     <main>
         <article>
             <p>No has iniciado sesión. Redirigiendo...</p>
             <?php
-                header('Refresh: 2; url=./../controladores/index.php');
+                header('Refresh: 2; url=./../index.php');
             ?>
         </article>
     </main>
-
     <?php
         }
     ?>
